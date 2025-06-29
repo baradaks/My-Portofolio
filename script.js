@@ -1,10 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
   // --- 1. Smooth scrolling for navigation links ---
-  document.querySelectorAll("nav a").forEach((anchor) => {
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       e.preventDefault();
 
-      // Tutup menu hamburger jika terbuka setelah link diklik (khusus mobile)
+      const targetEl = document.querySelector(this.getAttribute("href"));
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: "smooth" });
+      }
+
+      // Tutup menu hamburger jika terbuka
       const navbarMenu = document.getElementById("navbar-menu");
       const mobileMenu = document.getElementById("mobile-menu");
       if (navbarMenu && mobileMenu && navbarMenu.classList.contains("active")) {
@@ -12,10 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
         mobileMenu.querySelector("i").classList.remove("fa-times");
         mobileMenu.querySelector("i").classList.add("fa-bars");
       }
-
-      document.querySelector(this.getAttribute("href")).scrollIntoView({
-        behavior: "smooth",
-      });
     });
   });
 
@@ -121,8 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const typedTextSpan = document.querySelector(".typing-effect");
   const textArray = ["Pembadar Pane"];
   const typingDelay = 100;
-  const erasingDelay = 70;
-  const newTextDelay = 2000;
+  const newTextDelay = 800;
 
   let textArrayIndex = 0;
   let charIndex = 0;
@@ -136,8 +136,6 @@ document.addEventListener("DOMContentLoaded", function () {
       charIndex++;
       setTimeout(type, typingDelay);
     } else {
-      typedTextSpan.classList.remove("typing");
-      setTimeout(erase, newTextDelay);
     }
   }
 

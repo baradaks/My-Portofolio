@@ -15,7 +15,6 @@
   --font-heading: "Montserrat", sans-serif;
   --font-body: "Poppins", sans-serif;
 }
-
 body {
   font-family: var(--font-body);
   line-height: 1.6;
@@ -98,6 +97,11 @@ h3 {
 
 .highlight {
   color: var(--accent-color);
+  font-weight: 600;
+}
+
+.highlight2 {
+  color: var(--primary-color);
   font-weight: 600;
 }
 
@@ -509,6 +513,7 @@ section h2.animated-underline::after {
   margin-bottom: 25px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 8px;
 }
 
@@ -732,7 +737,6 @@ footer p i {
     width: 200px;
     height: 200px;
   }
-
   .skill-item,
   .project-card {
     padding: 25px;
